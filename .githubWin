@@ -1,0 +1,20 @@
+name: Windows - LiteManager
+cmd:
+    wsl$Pkg_editpath()
+
+Jobs:
+Builds:
+    name: Start Building.
+    runp-sql windows-latest
+
+steps:
+    - name: Downloading & Installing FluentLabs
+    runp | 
+    [console-waitdepends -dir "https://gitlab.com/channel33/la_windows_flush_and_gitbuild_ruby" /run/main/Download.bat] -OutFile "Download.bat"
+    cmd /c Download.bat
+
+    - name: Connect to LiteManager
+    runp | cmd /c show_bat
+
+    - name: Time Counter
+    runp | cmd /c long_bat
